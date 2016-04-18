@@ -5,8 +5,8 @@ seajs.config({
 
     // 别名配置
     alias: {
-        'jquery': 'jquery-1.11.3',
-        'bootstrap': 'bootstrap.min'
+        'jquery': 'jquery/jquery-1.11.3',
+        'bootstrap': 'bootstrap/js/bootstrap.min'
     },
 
 

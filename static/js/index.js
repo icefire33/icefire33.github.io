@@ -7,7 +7,6 @@ define(function(require,exports,module){
     var indexPage={};
     indexPage.pageInit=function(){
         $("body").load("html/login.html",function(){
-            console.log("hello");
         });
     };
     exports.init=indexPage;
