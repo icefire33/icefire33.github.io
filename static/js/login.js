@@ -6,6 +6,7 @@ define(function(require,exports,module){
     var loginPage={};
     loginPage.pageInit=function(){
         loginTabs();
+        bindLoginBtn();
     };
     function loginTabs(){
         $(".tab li").on("click",function(){
@@ -16,6 +17,14 @@ define(function(require,exports,module){
                 $(".tabPage .show").removeClass("show").addClass("hide");
                 $(".tabPage li").eq(index).addClass("show").removeClass("hide");
             }
+        });
+    }
+    function bindLoginBtn(){
+        $("#login").on("click",function(){
+            var param={};
+           param.username=$("#usernameL").val();
+           param.password=$("#passwordL").val();
+            httpClient.post();
         });
     }
     exports.init=loginPage;
