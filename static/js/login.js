@@ -24,7 +24,8 @@ define(function(require,exports,module){
             var param={};
            param.username=$("#usernameL").val();
            param.password=$("#passwordL").val();
-            httpClient.post();
+            $("body").load("static/html/personalPage.html",function(){
+            });
         });
     }
     exports.init=loginPage;
