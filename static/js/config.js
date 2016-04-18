@@ -14,5 +14,5 @@ seajs.config({
     charset: 'utf-8'
 });
 //seajs.host="http://localhost:8081";
-seajs.host = "http://icefirevie.github.io"; //远程接口服务的地址
+seajs.host = "http://icefire33.github.io"; //远程接口服务的地址
 seajs.pageSize = 20;
