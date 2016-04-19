@@ -1,63 +1,177 @@
-html,body{
-  width:100%;
-  height:100%;
+html, body {
+  width: 100%;
+  height: 100%;
 }
-.tdRight{
+
+.tdRight {
   text-align: right;
 }
-.tdLeft{
+
+.tdLeft {
   text-align: left;
 }
-.tdCenter{
+
+.tdCenter {
   text-align: center;
 }
-*{
-  margin:0;
-  padding:0;
+
+* {
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
+
 /*登陆界面*/
-#loginPage{
-  width:300px;
-  max-height:80%;
-  height:350px;
+#loginPage {
+  width: 300px;
+  max-height: 80%;
+  height: 350px;
   position: absolute;
-  left:50%;
-  top:50%;
+  left: 50%;
+  top: 50%;
   margin-left: -150px;
-  margin-top:-175px;
+  margin-top: -175px;
   overflow: hidden;
-  background-color: rgba(255,255,255,0.3);
-  border-radius:5px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
 }
-.loginTable td{
-  padding:6px;
+
+.loginTable td {
+  padding: 6px;
 }
-#loginPage .tab{
-  margin:0 0 60px 0;
+
+#loginPage .tab {
+  margin: 0 0 60px 0;
   overflow: hidden;
-  li{
-    color:#ddd;
-    float:left;
+  li {
+    color: #ddd;
+    float: left;
     border-bottom: 1px solid beige;
-    width:150px;
-    height:40px;
+    width: 150px;
+    height: 40px;
     line-height: 40px;
     text-align: center;
     font-size: 18px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight:600;
+    font-weight: 600;
   }
-  .current{
+  .current {
     border-bottom: 2px solid darkorange;
   }
 }
-.loginTable{
+
+.loginTable {
   margin-left: 20px;
 }
+
 /*个人主页*/
-#personalPageBox{
-  background-color:#000;
-  width:100%;
-  height:100%;
+#personalPageBox {
+  background-color: #000;
+  width: 100%;
+  height: 100%;
 }
+
+.logo {
+  width: 56px;
+  background-image: url("../images/logo.png");
+  background-size: cover;
+}
+
+/*轮播*/
+.mainPictureBox {
+  width: 2500px;
+}
+
+.mainPicture {
+  width: 100%;
+  height: 600px;
+  -webkit-perspective: 1500;
+  position: relative;
+  .right{
+    right:0;
+  }
+  .divShadow{
+    width:50px;
+    height:50px;
+    border-radius:50px;
+    position: absolute;
+    background-color: rgba(255,255,255,0.3);
+    top:150px;
+    text-align: center;
+    a{
+      color:rgba(255,255,255,0.7);
+      font-size: 40px;
+      line-height: 50px;
+      text-decoration: none;
+    }
+  }
+  li {
+    height: auto;
+    float: left;
+    z-index: 100;
+    position: relative;
+    @media screen and (max-width: 1920px) {
+      width: 500px;
+    }
+    @media screen and (max-width: 960px) {
+      width: 300px;
+    }
+    @media screen and (max-width: 500px) {
+      width: 150px;
+    }
+    span {
+      padding: 15px 30px 15px 33px;
+      overflow: hidden;
+      position: absolute;
+      color: #ccc;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(122, 122, 122, 0.3);
+      display: none;
+      text-align: justify;
+    }
+
+  }
+  li:first-child {
+    transform: translate3D(-150px, 0, -400px) rotateY(30deg);
+    z-index: -1;
+  }
+
+  li:nth-child(2) {
+    transform: translate3D(-200px, 0, 0);
+  }
+  li:nth-child(3) {
+    transform: translate3D(-200px, 0, -400px) rotateY(-30deg);
+    z-index: -1;
+    display: block;
+  }
+  li:nth-child(4) {
+    display: none;
+  }
+}
+
+//.moveScroll{
+//  animation:move1 50s linear infinite ;
+//}
+//@keyframes move1{
+//  0%{ transform: translate3D(-200px, 0, -400px);rotateY(-30deg)}
+//  75%{ transform: translate3D(-200px, 0, -200px);rotateY(-15deg)}
+//  100%{ transform: translate3D(-200px, 0, 0);rotateY(0deg)}
+//}
+//#ball span{
+//  animation:move1 50s linear infinite ;
+//}
+//#ball span:hover{
+//  opacity:0.5
+//}
+//@keyframes move1{
+//  0%{left:0px;top:120px;transform:rotate(0deg) scale(1)}
+//  15%{left:60px;top:240px;transform:rotate(360deg) scale(0.7);}
+//  25%{left:120px;top:360px;transform:rotate(720deg) scale(1)}
+//  35%{left:240px;top:480px;transform:rotate(1080deg) scale(0.6);}
+//  50%{left:360px;top:540px;transform:rotate(1440deg) scale(1);}
+//  60%{left:240px;top:480px;transform:rotate(1800deg) scale(0.6);}
+//  75%{left:120px;top:360px;transform:rotate(2160deg) scale(1);}
+//  85%{left:60px;top:240px;transform:rotate(2520deg) scale(0.7);}
+//  100%{left:0px;top:120px;transform:rotate(2900deg) scale(1);}
+//}

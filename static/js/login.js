@@ -3,6 +3,7 @@
  */
 define(function(require,exports,module){
     var $=require("jquery");
+    var bootstrap=require("bootstrap");
     var loginPage={};
     loginPage.pageInit=function(){
         loginTabs();
