@@ -7,7 +7,7 @@ define(function(require,exports,module){
     var personalPage={};
     personalPage.pageInit=function(){
         bindLeadFadeIn();
-        setInterval(carouselPicture,1000);
+        //setInterval(carouselPicture,1000);
     };
     function bindLeadFadeIn(){
         $(".leadPicture").hover(function(){

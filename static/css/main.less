@@ -78,15 +78,34 @@ html, body {
 }
 
 /*轮播*/
+@screen-sm-min:768px;
+@screen-md-min:992px;
+@screen-lg-min:1200px;
+.positiveRelative{
+  position: relative;
+}
 .mainPictureBox {
   width: 2500px;
+  div{
+    margin-bottom: 0;
+  }
 }
 
 .mainPicture {
   width: 100%;
-  height: 600px;
+  height: 220px;
+  @media (min-width: @screen-sm-min){
+    height: 240px;
+  }
+  @media (min-width: @screen-md-min) {
+    height: 300px;
+  }
+  @media (min-width: @screen-lg-min) {
+    height: 350px;
+  }
   -webkit-perspective: 1500;
   position: relative;
+  overflow: hidden;
   .right{
     right:0;
   }
@@ -96,8 +115,10 @@ html, body {
     border-radius:50px;
     position: absolute;
     background-color: rgba(255,255,255,0.3);
-    top:150px;
+    top:50%;
+    margin-top: -25px;
     text-align: center;
+    z-index: 1000;
     a{
       color:rgba(255,255,255,0.7);
       font-size: 40px;
@@ -109,15 +130,17 @@ html, body {
     height: auto;
     float: left;
     z-index: 100;
-    position: relative;
-    @media screen and (max-width: 1920px) {
-      width: 500px;
-    }
-    @media screen and (max-width: 960px) {
+    position: absolute;
+    width:320px;
+    font-size: 12px;
+    @media (min-width: @screen-sm-min){
       width: 300px;
     }
-    @media screen and (max-width: 500px) {
-      width: 150px;
+    @media (min-width: @screen-md-min) {
+      width: 430px;
+    }
+    @media (min-width: @screen-lg-min) {
+      width: 500px;
     }
     span {
       padding: 15px 30px 15px 33px;
@@ -133,15 +156,22 @@ html, body {
 
   }
   li:first-child {
-    transform: translate3D(-150px, 0, -400px) rotateY(30deg);
+    left:-12%;
+    transform: translate3D(0, 0, -400px) rotateY(30deg);
     z-index: -1;
   }
 
   li:nth-child(2) {
-    transform: translate3D(-200px, 0, 0);
+    left:30%;
+    transform: translate3D(0, 0, 0);
+    @media (max-width: @screen-sm-min){
+      left:50%;
+      margin-left: -160px;
+    }
   }
   li:nth-child(3) {
-    transform: translate3D(-200px, 0, -400px) rotateY(-30deg);
+    right:-12%;
+    transform: translate3D(0, 0, -400px) rotateY(-30deg);
     z-index: -1;
     display: block;
   }
@@ -149,11 +179,10 @@ html, body {
     display: none;
   }
 }
-
 //.moveScroll{
 //  animation:move1 50s linear infinite ;
 //}
-//@keyframes move1{
+//@-webkit-keyframes move1{
 //  0%{ transform: translate3D(-200px, 0, -400px);rotateY(-30deg)}
 //  75%{ transform: translate3D(-200px, 0, -200px);rotateY(-15deg)}
 //  100%{ transform: translate3D(-200px, 0, 0);rotateY(0deg)}
