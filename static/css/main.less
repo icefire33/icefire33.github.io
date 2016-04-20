@@ -34,6 +34,13 @@ html, body {
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 5px;
+  .scrollLine{
+    position: absolute;
+    border-bottom: 2px solid darkorange;
+    width:150px;
+    margin-top: 39px;
+    //margin-left: 150px;
+  }
 }
 
 .loginTable td {
@@ -55,8 +62,16 @@ html, body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 600;
   }
-  .current {
-    border-bottom: 2px solid darkorange;
+  .currentTab {
+    //border-bottom: 2px solid darkorange;
+  }
+}
+.tabPage{
+  width:600px;
+  position: absolute;
+  li{
+    width:300px;
+    float:left;
   }
 }
 

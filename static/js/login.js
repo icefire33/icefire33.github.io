@@ -11,12 +11,19 @@ define(function(require,exports,module){
     };
     function loginTabs(){
         $(".tab li").on("click",function(){
-            if(!$(this).hasClass(".current")){
+            if(!$(this).hasClass(".currentTab")){
                 var index=$(this).index();
-                $(".tab .current").removeClass("current");
-                $(this).addClass("current");
-                $(".tabPage .show").removeClass("show").addClass("hide");
-                $(".tabPage li").eq(index).addClass("show").removeClass("hide");
+                $(".tab .currentTab").removeClass("currentTab");
+                $(this).addClass("currentTab");
+                if(index==0){
+                    $(".scrollLine").animate({marginLeft:0},"slow");
+                    $(".tabPage").animate({left:0},"slow");
+                }else if(index==1){
+                    $(".scrollLine").animate({marginLeft:"150px"},"slow");
+                    $(".tabPage").animate({left:"-300px"},"slow");
+                }
+                //$(".tabPage .prevPage").removeClass("prevPage").addClass("nextPage");
+                //$(".tabPage li").eq(index).addClass("prevPage").removeClass("nextPage");
             }
         });
     }
