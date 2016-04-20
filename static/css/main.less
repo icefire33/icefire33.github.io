@@ -106,25 +106,20 @@ html, body {
   -webkit-perspective: 1500;
   position: relative;
   overflow: hidden;
-  .right{
-    right:0;
-  }
   .divShadow{
     width:50px;
     height:50px;
     border-radius:50px;
     position: absolute;
-    background-color: rgba(255,255,255,0.3);
     top:50%;
     margin-top: -25px;
     text-align: center;
     z-index: 1000;
-    a{
-      color:rgba(255,255,255,0.7);
-      font-size: 40px;
-      line-height: 50px;
-      text-decoration: none;
-    }
+    background-image: url("../images/btn.png");
+  }
+  .rightScroll{
+    right:0;
+    background-position: right 120px;
   }
   li {
     height: auto;
@@ -162,8 +157,8 @@ html, body {
   }
 
   li:nth-child(2) {
-    left:30%;
-    transform: translate3D(0, 0, 0);
+    left:29%;
+    transform: translate3D(0, 0, 0) rotateY(0deg);
     @media (max-width: @screen-sm-min){
       left:50%;
       margin-left: -160px;
@@ -173,10 +168,11 @@ html, body {
     right:-12%;
     transform: translate3D(0, 0, -400px) rotateY(-30deg);
     z-index: -1;
-    display: block;
   }
   li:nth-child(4) {
-    display: none;
+    right:29%;
+    transform: translate3D(0, 0, -400px) rotateY(0deg);
+    z-index: -2;
   }
 }
 //.moveScroll{

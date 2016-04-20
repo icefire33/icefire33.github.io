@@ -1,24 +1,39 @@
 /**
  * Created by C0079 on 2016/4/18.
  */
-define(function(require,exports,module){
-    var $=require("jquery");
-    var bootstrap=require("bootstrap");
-    var personalPage={};
-    personalPage.pageInit=function(){
+define(function (require, exports, module) {
+    var $ = require("jquery");
+    var bootstrap = require("bootstrap");
+    var personalPage = {};
+    personalPage.pageInit = function () {
         bindLeadFadeIn();
         //setInterval(carouselPicture,1000);
+        bindArrowsClick();
     };
-    function bindLeadFadeIn(){
-        $(".leadPicture").hover(function(){
+    function bindLeadFadeIn() {
+        $(".leadPicture").hover(function () {
             $(this).find(".leadSentence").fadeIn("slow");
-        },function(){
+        }, function () {
             $(this).find(".leadSentence").fadeOut("slow");
         });
     }
-    function carouselPicture(){
+
+    function carouselPicture() {
         $(".mainPictureBox").append($(".mainPictureBox li").first());
     }
 
-    exports.init=personalPage;
+    function bindArrowsClick() {
+        $(".rightScroll").on("click", function () {
+            $(".mainPictureBox li").each(function(i,n){
+                $(n).removeClass("moveScrollOne moveScrollTwo moveScrollThree moveScrollFour");
+            });
+             $(".mainPictureBox li:first-child").addClass("moveScrollOne").css({left:"29%", zIndex:-2,transform: "translate3D(0, 0, -400px) rotateY(0)",right:"auto"});
+             $(".mainPictureBox li:nth-child(2)").addClass("moveScrollTwo").css({left:"-12%", zIndex:-1,transform: "translate3D(0, 0, -400px) rotateY(30deg)",right:"auto"});
+             $(".mainPictureBox li:nth-child(3)").addClass("moveScrollThree").css({right:"29%", zIndex:100,transform: "translate3D(0, 0, 0) rotateY(0deg)",left:"auto"});
+             $(".mainPictureBox li:nth-child(4)").addClass("moveScrollFour").css({right:"-12%",zIndex:-1, transform: "translate3D(0, 0, -400px) rotateY(-30deg)",left:"auto"});
+            $(".mainPictureBox").append($(".mainPictureBox li").first());
+        });
+    }
+
+    exports.init = personalPage;
 });

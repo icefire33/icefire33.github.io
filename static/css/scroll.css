@@ -1,0 +1,32 @@
+.moveScrollOne{
+    animation:moveOne 1s linear;
+}
+@-webkit-keyframes moveOne{
+    0%{rotateY(30deg); left:-12%;z-index: -1;}
+    10%{rotateY(11deg); left:10%;}
+    100%{rotateY(0deg); left:29%;z-index:-2;}
+}
+.moveScrollTwo{
+    animation:moveTwo 1s linear;
+}
+@-webkit-keyframes moveTwo{
+    0%{ transform: translate3D(0, 0, 0);rotateY(0deg); left:29%;z-index:100}
+    10%{ transform: translate3D(0, 0, -200px);rotateY(11deg); left:10%}
+    100%{ transform: translate3D(0, 0, -400px);rotateY(30deg);z-index:-1; left:-12%;}
+}
+.moveScrollThree{
+    animation:moveThree 1s linear;
+}
+@-webkit-keyframes moveThree{
+    0%{ transform: translate3D(0, 0, -400px);rotateY(-30deg); right:-12%;z-index: -1}
+    10%{ transform: translate3D(0, 0, -200px);rotateY(-15deg); right:10%;z-index:100;}
+    100%{ transform: translate3D(0, 0, 0);rotateY(0deg);right:29%;z-index:100;}
+}
+.moveScrollFour{
+    animation:moveFour 1s linear;
+}
+@-webkit-keyframes moveFour{
+    0%{rotateY(0deg); right:29%;z-index: -2}
+    10%{rotateY(-15deg); right:10%;}
+    100%{rotateY(-30deg);right:-12%;z-index:-1;}
+}
