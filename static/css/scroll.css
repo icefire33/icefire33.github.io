@@ -3,7 +3,7 @@
 }
 @-webkit-keyframes moveOne{
     0%{transform: translate3D(0, 0, -400px) rotateY(30deg); left:-12%;z-index: -1;}
-    10%{transform: translate3D(0, 0, -400px) rotateY(15deg); left:10%;}
+    10%{transform: translate3D(0, 0, -400px) rotateY(15deg); left:10%;z-index:-10}
     100%{transform: translate3D(0, 0, -400px) rotateY(0deg); left:50%;z-index:-10;}
 }
 .moveScrollTwo{

@@ -12,9 +12,13 @@ define(function (require, exports, module) {
     };
     function bindLeadFadeIn() {
         $(".leadPicture").hover(function () {
-            $(this).find(".leadSentence").fadeIn("slow");
+            if($(this).index()==1){
+                $(this).find(".leadSentence").fadeIn("slow");
+            }
         }, function () {
-            $(this).find(".leadSentence").fadeOut("slow");
+            if($(this).index()==1) {
+                $(this).find(".leadSentence").fadeOut("slow");
+            }
         });
     }
 
@@ -32,6 +36,7 @@ define(function (require, exports, module) {
              $(".mainPictureBox li:nth-child(3)").addClass("moveScrollThree").css({right:"50%", zIndex:100,transform: "translate3D(0, 0, 0) rotateY(0deg)",left:"auto"});
              $(".mainPictureBox li:nth-child(4)").addClass("moveScrollFour").css({right:"-12%",zIndex:-1, transform: "translate3D(0, 0, -400px) rotateY(-30deg)",left:"auto"});
             $(".mainPictureBox").append($(".mainPictureBox li").first());
+            bindLeadFadeIn();
         });
         $(".leftScroll").on("click", function () {
             $(".mainPictureBox li").each(function(i,n){
@@ -42,6 +47,7 @@ define(function (require, exports, module) {
             $(".mainPictureBox li:nth-child(3)").addClass("moveScrollThreeR").css({right:"50%", zIndex:-10,transform: "translate3D(0, 0, -400px) rotateY(0deg)",left:"auto"});
             $(".mainPictureBox li:nth-child(4)").addClass("moveScrollFourR").css({left:"-12%",zIndex:-1, transform: "translate3D(0, 0, -400px) rotateY(30deg)",right:"auto"});
             $(".mainPictureBox li:first-child").before($(".mainPictureBox li").last());
+            bindLeadFadeIn();
         });
     }
 
