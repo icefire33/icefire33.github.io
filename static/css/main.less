@@ -173,30 +173,9 @@ html, body {
     right:29%;
     transform: translate3D(0, 0, -400px) rotateY(0deg);
     z-index: -10;
+    @media (max-width: @screen-sm-min){
+      left:50%;
+      margin-left: -160px;
+    }
   }
 }
-//.moveScroll{
-//  animation:move1 50s linear infinite ;
-//}
-//@-webkit-keyframes move1{
-//  0%{ transform: translate3D(-200px, 0, -400px);rotateY(-30deg)}
-//  75%{ transform: translate3D(-200px, 0, -200px);rotateY(-15deg)}
-//  100%{ transform: translate3D(-200px, 0, 0);rotateY(0deg)}
-//}
-//#ball span{
-//  animation:move1 50s linear infinite ;
-//}
-//#ball span:hover{
-//  opacity:0.5
-//}
-//@keyframes move1{
-//  0%{left:0px;top:120px;transform:rotate(0deg) scale(1)}
-//  15%{left:60px;top:240px;transform:rotate(360deg) scale(0.7);}
-//  25%{left:120px;top:360px;transform:rotate(720deg) scale(1)}
-//  35%{left:240px;top:480px;transform:rotate(1080deg) scale(0.6);}
-//  50%{left:360px;top:540px;transform:rotate(1440deg) scale(1);}
-//  60%{left:240px;top:480px;transform:rotate(1800deg) scale(0.6);}
-//  75%{left:120px;top:360px;transform:rotate(2160deg) scale(1);}
-//  85%{left:60px;top:240px;transform:rotate(2520deg) scale(0.7);}
-//  100%{left:0px;top:120px;transform:rotate(2900deg) scale(1);}
-//}
