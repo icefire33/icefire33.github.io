@@ -253,5 +253,18 @@ html, body {
     background-color: rgba(166,166,166,0.5);
     margin-bottom: 10px;
     border:1px solid rgba(166,166,166,0.5);
+    @media (max-width: @screen-sm-min){
+      font-size: 12px;
+      .contentPage {
+        max-height: 148px;
+      }
+    }
+  }
+}
+.content>.contentRight{
+  @media (max-width: @screen-md-min){
+    position:fixed;
+    right:0;
+    top:50%;
   }
 }
