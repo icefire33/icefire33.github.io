@@ -83,7 +83,7 @@ html, body {
 #personalPageBox {
   background-color: #000;
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .logo {
@@ -229,5 +229,29 @@ html, body {
       margin-left: -160px;
       margin-right: -160px;
     }
+  }
+}
+/*主体内容*/
+.content>div>ul{
+  color:#ddd;
+  overflow: hidden;
+  .contentPage{
+    max-height:150px;
+    overflow:hidden;
+    padding:10px 20px 10px 0;
+    text-align: justify;
+  }
+  .contentPhoto{
+    width:100%;
+    margin: 10px;
+  }
+  .pageRight{
+    text-align: right;
+    padding:0 30px 10px 0;
+  }
+  li.row{
+    background-color: rgba(166,166,166,0.5);
+    margin-bottom: 10px;
+    border:1px solid rgba(166,166,166,0.5);
   }
 }
