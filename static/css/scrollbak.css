@@ -1,0 +1,145 @@
+.moveScrollOne{
+    animation:moveOne 1s linear;
+}
+@keyframes moveOne{
+    0%{transform: translate3D(0, 0, -400px) rotateY(30deg); left:-12%;z-index: -1;}
+    10%{transform: translate3D(0, 0, -400px) rotateY(15deg); left:10%;z-index:-10}
+    100%{transform: translate3D(0, 0, -400px) rotateY(0deg); left:50%;z-index:-10;}
+}
+@-webkit-keyframes moveOne{
+    0%{-webkit-transform: translate3D(0, 0, -400px) rotateY(30deg); left:-12%;z-index: -1;}
+    10%{-webkit-transform: translate3D(0, 0, -400px) rotateY(15deg); left:10%;z-index:-10}
+    100%{-webkit-transform: translate3D(0, 0, -400px) rotateY(0deg); left:50%;z-index:-10;}
+}
+@-o-keyframes moveOne{
+    0%{-o-transform: translate3D(0, 0, -400px) rotateY(30deg); left:-12%;z-index: -1;}
+    10%{-o-transform: translate3D(0, 0, -400px) rotateY(15deg); left:10%;z-index:-10}
+    100%{-o-transform: translate3D(0, 0, -400px) rotateY(0deg); left:50%;z-index:-10;}
+}
+@-ms-keyframes moveOne{
+    0%{-ms-transform: translate3D(0, 0, -400px) rotateY(30deg); left:-12%;z-index: -1;}
+    10%{-ms-transform: translate3D(0, 0, -400px) rotateY(15deg); left:10%;z-index:-10}
+    100%{-ms-transform: translate3D(0, 0, -400px) rotateY(0deg); left:50%;z-index:-10;}
+}
+@-moz-keyframes moveOne{
+    0%{-moz-transform: translate3D(0, 0, -400px) rotateY(30deg); left:-12%;z-index: -1;}
+    10%{-moz-transform: translate3D(0, 0, -400px) rotateY(15deg); left:10%;z-index:-10}
+    100%{-moz-transform: translate3D(0, 0, -400px) rotateY(0deg); left:50%;z-index:-10;}
+}
+.moveScrollTwo{
+    animation:moveTwo 1s linear;
+}
+@keyframes moveTwo{
+    0%{ transform: translate3D(0, 0, 0) rotateY(0deg); left:50%;z-index:100}
+    10%{ transform: translate3D(0, 0, -200px) rotateY(15deg); left:10%}
+    100%{ transform: translate3D(0, 0, -400px) rotateY(30deg);z-index:-1; left:-12%;}
+}
+@-webkit-keyframes moveTwo{
+    0%{ -webkit-transform: translate3D(0, 0, 0) rotateY(0deg); left:50%;z-index:100}
+    10%{ -webkit-transform: translate3D(0, 0, -200px) rotateY(15deg); left:10%}
+    100%{ -webkit-transform: translate3D(0, 0, -400px) rotateY(30deg);z-index:-1; left:-12%;}
+}
+@-o-keyframes moveTwo{
+    0%{ -o-transform: translate3D(0, 0, 0) rotateY(0deg); left:50%;z-index:100}
+    10%{ -o-transform: translate3D(0, 0, -200px) rotateY(15deg); left:10%}
+    100%{ -o-transform: translate3D(0, 0, -400px) rotateY(30deg);z-index:-1; left:-12%;}
+}
+@-moz-keyframes moveTwo{
+    0%{ -moz-transform: translate3D(0, 0, 0) rotateY(0deg); left:50%;z-index:100}
+    10%{ -moz-transform: translate3D(0, 0, -200px) rotateY(15deg); left:10%}
+    100%{ -moz-transform: translate3D(0, 0, -400px) rotateY(30deg);z-index:-1; left:-12%;}
+}
+@-ms-keyframes moveTwo{
+    0%{ -ms-transform: translate3D(0, 0, 0) rotateY(0deg); left:50%;z-index:100}
+    10%{ -ms-transform: translate3D(0, 0, -200px) rotateY(15deg); left:10%}
+    100%{ -ms-transform: translate3D(0, 0, -400px) rotateY(30deg);z-index:-1; left:-12%;}
+}
+.moveScrollThree{
+    animation:moveThree 1s linear;
+}
+@keyframes moveThree{
+    0%{ transform: translate3D(0, 0, -400px) rotateY(-30deg); right:-12%;z-index: -1}
+    10%{ transform: translate3D(0, 0, -200px) rotateY(-15deg); right:10%;z-index:100;}
+    100%{ transform: translate3D(0, 0, 0) rotateY(0deg);right:50%;z-index:100;}
+}
+@-webkit-keyframes moveThree{
+    0%{ -webkit-transform: translate3D(0, 0, -400px) rotateY(-30deg); right:-12%;z-index: -1}
+    10%{ -webkit-transform: translate3D(0, 0, -200px) rotateY(-15deg); right:10%;z-index:100;}
+    100%{ -webkit-transform: translate3D(0, 0, 0) rotateY(0deg);right:50%;z-index:100;}
+}
+@-ms-keyframes moveThree{
+    0%{ -ms-transform: translate3D(0, 0, -400px) rotateY(-30deg); right:-12%;z-index: -1}
+    10%{ -ms-transform: translate3D(0, 0, -200px) rotateY(-15deg); right:10%;z-index:100;}
+    100%{ -ms-transform: translate3D(0, 0, 0) rotateY(0deg);right:50%;z-index:100;}
+}
+@-o-keyframes moveThree{
+    0%{ -o-transform: translate3D(0, 0, -400px) rotateY(-30deg); right:-12%;z-index: -1}
+    10%{ -o-transform: translate3D(0, 0, -200px) rotateY(-15deg); right:10%;z-index:100;}
+    100%{ -o-transform: translate3D(0, 0, 0) rotateY(0deg);right:50%;z-index:100;}
+}
+@-moz-keyframes moveThree{
+    0%{ -moz-transform: translate3D(0, 0, -400px) rotateY(-30deg); right:-12%;z-index: -1}
+    10%{ -moz-transform: translate3D(0, 0, -200px) rotateY(-15deg); right:10%;z-index:100;}
+    100%{ -moz-transform: translate3D(0, 0, 0) rotateY(0deg);right:50%;z-index:100;}
+}
+.moveScrollFour{
+    animation:moveFour 1s linear;
+}
+@keyframes moveFour{
+    0%{transform: translate3D(0, 0, -400px) rotateY(0deg); right:50%;z-index: -10}
+    10%{transform: translate3D(0, 0, -400px) rotateY(-15deg); right:10%;}
+    100%{transform: translate3D(0, 0, -400px) rotateY(-30deg);right:-12%;z-index:-1;}
+}
+@-webkit-keyframes moveFour{
+    0%{-webkit-transform: translate3D(0, 0, -400px) rotateY(0deg); right:50%;z-index: -10}
+    10%{-webkit-transform: translate3D(0, 0, -400px) rotateY(-15deg); right:10%;}
+    100%{-webkit-transform: translate3D(0, 0, -400px) rotateY(-30deg);right:-12%;z-index:-1;}
+}
+@-o-keyframes moveFour{
+    0%{-o-transform: translate3D(0, 0, -400px) rotateY(0deg); right:50%;z-index: -10}
+    10%{-o-transform: translate3D(0, 0, -400px) rotateY(-15deg); right:10%;}
+    100%{-o-transform: translate3D(0, 0, -400px) rotateY(-30deg);right:-12%;z-index:-1;}
+}
+@-moz-keyframes moveFour{
+    0%{-moz-transform: translate3D(0, 0, -400px) rotateY(0deg); right:50%;z-index: -10}
+    10%{-moz-transform: translate3D(0, 0, -400px) rotateY(-15deg); right:10%;}
+    100%{-moz-transform: translate3D(0, 0, -400px) rotateY(-30deg);right:-12%;z-index:-1;}
+}
+@-ms-keyframes moveFour{
+    0%{-ms-transform: translate3D(0, 0, -400px) rotateY(0deg); right:50%;z-index: -10}
+    10%{-ms-transform: translate3D(0, 0, -400px) rotateY(-15deg); right:10%;}
+    100%{-ms-transform: translate3D(0, 0, -400px) rotateY(-30deg);right:-12%;z-index:-1;}
+}
+/*右轮播*/
+.moveScrollOneR{
+    animation:moveOneR 1s linear;
+}
+@-webkit-keyframes moveOneR{
+    0%{transform: translate3D(0, 0, -400px) rotateY(30deg); left:-12%;z-index: -1;}
+    10%{transform: translate3D(0, 0, -200px) rotateY(15deg); left:10%;z-index: 100;}
+    100%{transform: translate3D(0, 0, 0) rotateY(0deg); left:50%;z-index:100;}
+}
+.moveScrollTwoR{
+    animation:moveTwoR 1s linear;
+}
+@-webkit-keyframes moveTwoR{
+    0%{ transform: translate3D(0, 0, 0) rotateY(0deg); right:50%;z-index:100}
+    10%{ transform: translate3D(0, 0, -200px) rotateY(-15deg); right:10%}
+    100%{ transform: translate3D(0, 0, -400px) rotateY(-30deg);z-index:-1; right:-12%}
+}
+.moveScrollThreeR{
+    animation:moveThreeR 1s linear;
+}
+@-webkit-keyframes moveThreeR{
+    0%{ transform: translate3D(0, 0, -400px) rotateY(-30deg); right:-12%;z-index: -1}
+    10%{ transform: translate3D(0, 0, -400px) rotateY(-15deg); right:10%;z-index:-10;}
+    100%{ transform: translate3D(0, 0, -400px) rotateY(0deg);right:50%;z-index:-10;}
+}
+.moveScrollFourR{
+    animation:moveFourR 1s linear;
+}
+@-webkit-keyframes moveFourR{
+    0%{transform: translate3D(0, 0, -400px) rotateY(0deg); left:50%;z-index: -10}
+    10%{transform: translate3D(0, 0, -400px) rotateY(15deg); left:10%;}
+    100%{transform: translate3D(0, 0, -400px) rotateY(30deg);left:-12%;z-index:-1;}
+}
