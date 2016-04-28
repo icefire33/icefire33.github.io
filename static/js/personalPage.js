@@ -9,6 +9,8 @@ define(function (require, exports, module) {
         bindLeadFadeIn();
         //setInterval(carouselPicture,1000);
         bindArrowsClick();
+        xx(".flower_svg").hover();
+        xx.animateAll();
     };
     function bindLeadFadeIn() {
         $(".leadPicture").hover(function () {
