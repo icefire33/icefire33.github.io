@@ -17,6 +17,7 @@ define(function (require, exports, module) {
 
     };
     function getAudioTime(){
+        $(".get_position").stop().css("left","-593px");
         var time=document.getElementById("my_audio").duration;
         var minute=parseInt(time/60);
         var second=Math.round(time%60);
@@ -27,7 +28,6 @@ define(function (require, exports, module) {
         controlAudioPlay(time);
     }
     function controlAudioPlay(time){
-        //var width=$(".played_line").width();
         document.getElementById("my_audio").play();
         $(".get_position").animate({left:"0"},time*1000,"linear");
     }
