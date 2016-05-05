@@ -11,7 +11,28 @@ define(function (require, exports, module) {
         bindArrowsClick();
         xx(".flower_svg").hover();
         xx.animateAll();
+        $("#audio_btn").on("click",function(){
+            getAudioTime();//获取音频时长
+        });
+
     };
+    function getAudioTime(){
+        var time=document.getElementById("my_audio").duration;
+        var minute=parseInt(time/60);
+        var second=Math.round(time%60);
+        second=second<10?"0"+second:second;
+        var duration=minute+":"+second;
+        $("#duration").html(duration);
+        //控制音频的播放
+        controlAudioPlay(time);
+    }
+    function controlAudioPlay(time){
+        //var width=$(".played_line").width();
+        document.getElementById("my_audio").play();
+        $(".get_position").animate({left:"0"},time*1000,"linear");
+    }
+
+
     function bindLeadFadeIn() {
         $(".leadPicture").hover(function () {
             if($(this).index()==1){
