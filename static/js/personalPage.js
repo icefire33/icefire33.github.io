@@ -17,19 +17,30 @@ define(function (require, exports, module) {
 
     };
     function getAudioTime(){
-        $(".get_position").stop().css("left","-593px");
         var time=document.getElementById("my_audio").duration;
+        var currentTime=document.getElementById("my_audio").currentTime;
         var minute=parseInt(time/60);
         var second=Math.round(time%60);
         second=second<10?"0"+second:second;
         var duration=minute+":"+second;
         $("#duration").html(duration);
         //控制音频的播放
+        time=time-currentTime;
         controlAudioPlay(time);
     }
     function controlAudioPlay(time){
-        document.getElementById("my_audio").play();
-        $(".get_position").animate({left:"0"},time*1000,"linear");
+        if($(".get_position").attr("data-play")=="play"){
+            document.getElementById("my_audio").pause();
+            $(".get_position").stop();
+            $(".get_position").attr("data-play","");
+            $(".play_pause").removeClass("pause_play");
+        }else{
+            document.getElementById("my_audio").play();
+            $(".get_position").attr("data-play","play");
+            $(".play_pause").addClass("pause_play");
+            $(".get_position").animate({left:"0"},time*1000,"linear");
+        }
+
     }
 
 
