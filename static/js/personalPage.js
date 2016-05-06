@@ -14,8 +14,21 @@ define(function (require, exports, module) {
         $("#audio_btn").on("click",function(){
             getAudioTime();//获取音频时长
         });
+        bindAudioVolumeBtn();
 
     };
+
+    function bindAudioVolumeBtn(){
+        $(".audio_volume").click(function(){
+            if($(".audio_volume").attr("data-status")=="mute"){
+                $(".audio_volume").removeClass("audio_mute");
+                $(".audio_volume").attr("data-status","");
+            }else{
+                $(".audio_volume").addClass("audio_mute");
+                $(".audio_volume").attr("data-status","mute");
+            }
+        });
+    }
     function getAudioTime(){
         var time=document.getElementById("my_audio").duration;
         var currentTime=document.getElementById("my_audio").currentTime;
