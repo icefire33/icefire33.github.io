@@ -12,24 +12,103 @@ define(function (require, exports, module) {
         xx(".flower_svg").hover();
         xx.animateAll();
         $("#audio_btn").on("click",function(){
-            getAudioTime();//获取音频时长
+            getAudioTime(null);//获取音频时长
         });
         bindAudioVolumeBtn();
-
+        bindVolumeAndPlayLineDrag();//绑定音量条与播放条拖拽事件
     };
-
+    function bindVolumeAndPlayLineDrag(){
+        bindPlayLineDrag();
+        bindVolumeLineDrag();
+    }
+    function bindVolumeLineDrag(){
+        var circleWidth=$(".volume_current_circle").width();
+        var xLeft=$(".volume_line").width()-circleWidth;
+        var volumeLineX=$(".volume_line").offset().left;
+        $(".volume_current_circle").mousedown(function(){
+            $("body").append("<div id='audio_cover'></div>");
+            $("#audio_cover").mousemove(function(e){
+                var x=e.pageX-volumeLineX;
+                var left=x-xLeft+"px";
+                if(x>xLeft){
+                    left=0;
+                    x=xLeft;
+                }else if(x<circleWidth){
+                    left=-xLeft;
+                    x=0;
+                }
+                $(".volume_position").css("left",left);
+                $("#audio_cover").off("mouseup").on("mouseup",function(){
+                    document.getElementById("my_audio").muted=false;
+                    var currentVolume=x/xLeft;
+                    if(x==0){
+                        $(".audio_volume").addClass("audio_mute");
+                        $(".audio_volume").attr("data-status","mute");
+                    }else{
+                        $(".audio_volume").removeClass("audio_mute");
+                        $(".audio_volume").attr("data-status","");
+                    }
+                    document.getElementById("my_audio").volume=currentVolume;
+                    $("#audio_cover").off("mousemove").remove();
+                });
+            });
+            $("#audio_cover").off("mouseup").on("mouseup",function(){
+                $("#audio_cover").off("mousemove").remove();
+            });
+        });
+    }
     function bindAudioVolumeBtn(){
         $(".audio_volume").click(function(){
+            var circleWidth=$(".volume_current_circle").width();
+            var volumeLineLeft=$(".volume_line").width()-circleWidth;
+            var xLeft=$(".volume_position").css("left");
             if($(".audio_volume").attr("data-status")=="mute"){
-                $(".audio_volume").removeClass("audio_mute");
-                $(".audio_volume").attr("data-status","");
+                $(".audio_volume").removeClass("audio_mute").attr("data-status","");
+                var currValue=$(".audio_volume").attr("data-currValue");
+                $(".volume_position").css("left",currValue);
+                $(".audio_volume").attr("data-currValue","");
+                document.getElementById("my_audio").muted=false;
             }else{
-                $(".audio_volume").addClass("audio_mute");
-                $(".audio_volume").attr("data-status","mute");
+                $(".audio_volume").addClass("audio_mute").attr("data-status","mute").attr("data-currValue",xLeft);
+                $(".volume_position").css("left",-volumeLineLeft+"px");
+                document.getElementById("my_audio").muted=true;
             }
         });
     }
-    function getAudioTime(){
+    function bindPlayLineDrag(){
+        var xLeft=-parseFloat($(".get_position").css("left"));
+        var circleWidth=$(".current_circle").width();
+        $(".current_circle").mousedown(function(event){
+            $("body").append("<div id='audio_cover'></div>");
+            $("#audio_cover").mousemove(function(e){
+                $(".get_position").stop();
+                var x=e.pageX;
+                var left=x-xLeft+"px";
+                if(x>xLeft){
+                    left=0;
+                    x=0;
+                }else if(x<circleWidth){
+                    left=-xLeft;
+                }
+                $(".get_position").css("left",left);
+                $("#audio_cover").off("mouseup").on("mouseup",function(){
+                    var time=document.getElementById("my_audio").duration;
+                    var currentTime=time*x/xLeft;
+                    if(x==0){
+                        $(".get_position").css("left",-xLeft+"px");
+                    }
+                    document.getElementById("my_audio").currentTime=currentTime;
+                    $("#audio_cover").off("mousemove").remove();
+                    $(".get_position").stop();
+                    getAudioTime("play");
+                });
+            });
+            $("#audio_cover").off("mouseup").on("mouseup",function(){
+                $("#audio_cover").off("mousemove").remove();
+            });
+        });
+    }
+    function getAudioTime(keyword){
         var time=document.getElementById("my_audio").duration;
         var currentTime=document.getElementById("my_audio").currentTime;
         var minute=parseInt(time/60);
@@ -39,10 +118,10 @@ define(function (require, exports, module) {
         $("#duration").html(duration);
         //控制音频的播放
         time=time-currentTime;
-        controlAudioPlay(time);
+        controlAudioPlay(time,keyword);
     }
-    function controlAudioPlay(time){
-        if($(".get_position").attr("data-play")=="play"){
+    function controlAudioPlay(time,keyword){
+        if($(".get_position").attr("data-play")=="play"&&keyword==null){
             document.getElementById("my_audio").pause();
             $(".get_position").stop();
             $(".get_position").attr("data-play","");
@@ -51,7 +130,10 @@ define(function (require, exports, module) {
             document.getElementById("my_audio").play();
             $(".get_position").attr("data-play","play");
             $(".play_pause").addClass("pause_play");
-            $(".get_position").animate({left:"0"},time*1000,"linear");
+            $(".get_position").animate({left:"0"},time*1000,"linear",function(){
+                $(".get_position").attr("data-play","");
+                $(".play_pause").removeClass("pause_play");
+            });
         }
 
     }
