@@ -11,16 +11,24 @@ define(function (require, exports, module) {
         bindArrowsClick();
         xx(".flower_svg").hover();
         xx.animateAll();
+        bindAudioPlayBtn(); //控制开关键及获取当前时间
+        bindAudioVolumeBtn();//是否为静音判断
+        bindVolumeAndPlayLineDrag();//绑定音量条与播放条拖拽事件
+        bindVolumeLineClick();//按钮点击播放条控制播放进度
+        bindPlayLineClick(); //按钮点击播放条控制播放进度
+    };
+    //控制开关键及获取当前时间
+    function bindAudioPlayBtn(){
         $("#audio_btn").on("click",function(){
             getAudioTime(null);//获取音频时长
         });
-        bindAudioVolumeBtn();
-        bindVolumeAndPlayLineDrag();//绑定音量条与播放条拖拽事件
-    };
+    }
+    //绑定音量与播放条的拖拽事件
     function bindVolumeAndPlayLineDrag(){
         bindPlayLineDrag();
         bindVolumeLineDrag();
     }
+    //控制音量拖拽功能
     function bindVolumeLineDrag(){
         var circleWidth=$(".volume_current_circle").width();
         var xLeft=$(".volume_line").width()-circleWidth;
@@ -57,6 +65,35 @@ define(function (require, exports, module) {
             });
         });
     }
+    //按钮点击音量条控制音量大小
+    function bindVolumeLineClick(){
+        var circleWidth=$(".volume_current_circle").width();
+        var xLeft=$(".volume_line").width()-circleWidth;
+        var volumeLineX=$(".volume_line").offset().left;
+        $(".volume_line").click(function(e){
+            var x=e.pageX-volumeLineX;
+            var left=x-xLeft+"px";
+            if(x>xLeft){
+                left=0;
+                x=xLeft;
+            }else if(x<circleWidth){
+                left=-xLeft;
+                x=0;
+            }
+            $(".volume_position").css("left",left);
+            document.getElementById("my_audio").muted=false;
+            var currentVolume=x/xLeft;
+            if(x==0){
+                $(".audio_volume").addClass("audio_mute");
+                $(".audio_volume").attr("data-status","mute");
+            }else{
+                $(".audio_volume").removeClass("audio_mute");
+                $(".audio_volume").attr("data-status","");
+            }
+            document.getElementById("my_audio").volume=currentVolume;
+        });
+    }
+    //是否为静音判断
     function bindAudioVolumeBtn(){
         $(".audio_volume").click(function(){
             var circleWidth=$(".volume_current_circle").width();
@@ -75,6 +112,7 @@ define(function (require, exports, module) {
             }
         });
     }
+    //控制播放条拖拽功能
     function bindPlayLineDrag(){
         var xLeft=-parseFloat($(".get_position").css("left"));
         var circleWidth=$(".current_circle").width();
@@ -100,6 +138,9 @@ define(function (require, exports, module) {
                     document.getElementById("my_audio").currentTime=currentTime;
                     $("#audio_cover").off("mousemove").remove();
                     $(".get_position").stop();
+                    if(window.audioTime){
+                        clearInterval(audioTime);
+                    }
                     getAudioTime("play");
                 });
             });
@@ -108,20 +149,42 @@ define(function (require, exports, module) {
             });
         });
     }
+    //按钮点击播放条控制播放进度
+    function bindPlayLineClick(){
+        var xLeft=-parseFloat($(".get_position").css("left"));
+        var circleWidth=$(".current_circle").width();
+        $(".play_line").click(function(e){
+            var x= e.pageX;
+            var left=x-xLeft+"px";
+            if(x>xLeft){
+                left=0;
+                x=0;
+            }else if(x<circleWidth){
+                left=-xLeft;
+            }
+            $(".get_position").css("left",left).stop();
+            var time=document.getElementById("my_audio").duration;
+            var currentTime=time*x/xLeft;
+            if(x==0){
+                $(".get_position").css("left",-xLeft+"px");
+            }
+            document.getElementById("my_audio").currentTime=currentTime;
+            getAudioTime("play");
+        });
+    }
+    //获取当前播放时间
     function getAudioTime(keyword){
         var time=document.getElementById("my_audio").duration;
         var currentTime=document.getElementById("my_audio").currentTime;
-        var minute=parseInt(time/60);
-        var second=Math.round(time%60);
-        second=second<10?"0"+second:second;
-        var duration=minute+":"+second;
-        $("#duration").html(duration);
-        //控制音频的播放
         time=time-currentTime;
+
+        //控制音频的播放
         controlAudioPlay(time,keyword);
     }
+    //控制是否播放
     function controlAudioPlay(time,keyword){
         if($(".get_position").attr("data-play")=="play"&&keyword==null){
+            clearInterval(audioTime);
             document.getElementById("my_audio").pause();
             $(".get_position").stop();
             $(".get_position").attr("data-play","");
@@ -130,14 +193,30 @@ define(function (require, exports, module) {
             document.getElementById("my_audio").play();
             $(".get_position").attr("data-play","play");
             $(".play_pause").addClass("pause_play");
+            var duration=document.getElementById("my_audio").duration;
+            var currentTime=document.getElementById("my_audio").currentTime;
+            console.log(duration+":"+currentTime);
+            if(currentTime==0){
+                time=duration;
+                var left=$(".current_circle").width()-$(".get_position").width()+"px";
+                $(".get_position").css("left",left);
+            }
             $(".get_position").animate({left:"0"},time*1000,"linear",function(){
                 $(".get_position").attr("data-play","");
                 $(".play_pause").removeClass("pause_play");
+                clearInterval(audioTime);
             });
+            window.audioTime=setInterval(function(){
+                var currentTime=document.getElementById("my_audio").currentTime;
+                var minute=parseInt(currentTime/60);
+                var second=Math.round(currentTime%60);
+                second=second<10?"0"+second:second;
+                minute=minute<10?"0"+minute:minute;
+                var duration=minute+":"+second;
+                $(".play_duration").html(duration);
+            },1000);
         }
-
     }
-
 
     function bindLeadFadeIn() {
         $(".leadPicture").hover(function () {
@@ -151,9 +230,9 @@ define(function (require, exports, module) {
         });
     }
 
-    function carouselPicture() {
-        $(".mainPictureBox").append($(".mainPictureBox li").first());
-    }
+    //function carouselPicture() {
+    //    $(".mainPictureBox").append($(".mainPictureBox li").first());
+    //}
 
     function bindArrowsClick() {
         $(".rightScroll").on("click", function () {
