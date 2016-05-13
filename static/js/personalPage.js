@@ -211,6 +211,10 @@ define(function (require, exports, module) {
                 var minute=parseInt(currentTime/60);
                 var second=Math.round(currentTime%60);
                 second=second<10?"0"+second:second;
+                if(second==60){
+                    minute++;
+                    second="00";
+                }
                 minute=minute<10?"0"+minute:minute;
                 var duration=minute+":"+second;
                 $(".play_duration").html(duration);
