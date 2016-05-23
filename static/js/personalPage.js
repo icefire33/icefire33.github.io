@@ -46,17 +46,27 @@ define(function (require, exports, module) {
                     x=0;
                 }
                 $(".volume_position").css("left",left);
+                document.getElementById("my_audio").muted=false;
+                var currentVolume=x/xLeft;
+                if(x==0){
+                    $(".audio_volume").addClass("audio_mute");
+                    $(".audio_volume").attr("data-status","mute");
+                }else{
+                    $(".audio_volume").removeClass("audio_mute");
+                    $(".audio_volume").attr("data-status","");
+                }
+                document.getElementById("my_audio").volume=currentVolume;
                 $("#audio_cover").off("mouseup").on("mouseup",function(){
-                    document.getElementById("my_audio").muted=false;
-                    var currentVolume=x/xLeft;
-                    if(x==0){
-                        $(".audio_volume").addClass("audio_mute");
-                        $(".audio_volume").attr("data-status","mute");
-                    }else{
-                        $(".audio_volume").removeClass("audio_mute");
-                        $(".audio_volume").attr("data-status","");
-                    }
-                    document.getElementById("my_audio").volume=currentVolume;
+                    //document.getElementById("my_audio").muted=false;
+                    //var currentVolume=x/xLeft;
+                    //if(x==0){
+                    //    $(".audio_volume").addClass("audio_mute");
+                    //    $(".audio_volume").attr("data-status","mute");
+                    //}else{
+                    //    $(".audio_volume").removeClass("audio_mute");
+                    //    $(".audio_volume").attr("data-status","");
+                    //}
+                    //document.getElementById("my_audio").volume=currentVolume;
                     $("#audio_cover").off("mousemove").remove();
                 });
             });
