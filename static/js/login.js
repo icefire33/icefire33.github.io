@@ -32,7 +32,7 @@ define(function(require,exports,module){
             var param={};
            param.username=$("#usernameL").val();
            param.password=$("#passwordL").val();
-            $("body").load("static/html/personalPage.html",function(){
+            $("body").load("personalPage.html",function(){
             });
         });
     }

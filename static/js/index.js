@@ -6,7 +6,7 @@ define(function(require,exports,module){
     var bootstrap=require("bootstrap");
     var indexPage={};
     indexPage.pageInit=function(){
-        $("body").load("static/html/login.html",function(){
+        $("body").load("login.html",function(){
         });
     };
     exports.init=indexPage;
